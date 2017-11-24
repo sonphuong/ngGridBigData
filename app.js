@@ -43,14 +43,14 @@ let ListController = function ($log, $scope, $q, $http, $filter, $timeout, i18nS
                             '</div>';
                 break;
             case 'website':
-                template = '<div class="ui-grid-cell-contents"><a href="{{row.entity.website}}"></a></div>';
+                template = '<div class="ui-grid-cell-contents"><a href="{{row.entity.website}}">{{row.entity.website}}</a></div>';
                 break;
             case 'action':
                 template = '<div class="ui-grid-cell-contents">' +
-                                '<span class="iconTbl">' +
-                                    '<a data-toggle="tooltip" data-placement="bottom" href="{{grid.appScope.getActionLink(1, grid, row)}}"><i class="fa fa-edit"></i></a> | ' +
-                                    '<a data-toggle="tooltip" data-placement="bottom" href="{{grid.appScope.getActionLink(2, grid, row)}}"><i class="fa fa-trash-o"></i></a> | ' +
-                                    '<a data-toggle="tooltip" data-placement="bottom" href="{{grid.appScope.getActionLink(3, grid, row)}}"><i class="fa fa-crop"></i></a> | ' +
+                                '<span>' +
+                                    '<a href="{{grid.appScope.getActionLink(1, grid, row)}}"><span class="glyphicon glyphicon-edit"></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;' +
+                                    '<a href="{{grid.appScope.getActionLink(2, grid, row)}}"><span class="glyphicon glyphicon-trash"></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;' +
+                                    '<a href="{{grid.appScope.getActionLink(3, grid, row)}}"><span class="glyphicon glyphicon-duplicate"></span></a>' +
                                 '</span>' +
                             '</div>';
                 break;
@@ -63,7 +63,7 @@ let ListController = function ($log, $scope, $q, $http, $filter, $timeout, i18nS
         position: 0,
         displayName: 'ID',
         field: 'id',
-        minWidth: 150,
+        minWidth: 50,
         enableSorting: true,
         enableFiltering: false,
         enableColumnMenu: false,
@@ -72,13 +72,29 @@ let ListController = function ($log, $scope, $q, $http, $filter, $timeout, i18nS
         displayName: 'Username',
         field: 'username',
         minWidth: 100,
-        enableSorting: false,
+        enableSorting: true,
         enableFiltering: true,
         enableColumnMenu: false
     }, {
         position: 2,
         displayName: 'Email',
         field: 'email',
+        minWidth: 100,
+        enableSorting: true,
+        enableFiltering: true,
+        enableColumnMenu: false
+    }, {
+        position: 2,
+        displayName: 'Name',
+        field: 'name',
+        minWidth: 150,
+        enableSorting: true,
+        enableFiltering: true,
+        enableColumnMenu: false
+    }, {
+        position: 2,
+        displayName: 'J Name',
+        field: 'jp_name',
         minWidth: 100,
         enableSorting: true,
         enableFiltering: true,
@@ -100,24 +116,23 @@ let ListController = function ($log, $scope, $q, $http, $filter, $timeout, i18nS
         position: 4,
         displayName: 'Website',
         field: 'website',
-        minWidth: 100,
+        minWidth: 200,
         enableSorting: false,
-        enableFiltering: false,
+        enableFiltering: true,
         enableColumnMenu: false,
         cellTemplate: $scope.getCellTemplate('website')
     }, {
         position: 5,
         displayName: 'Age',
         field: 'age',
-        minWidth: 100,
-        enableSorting: false,
+        minWidth: 50,
+        enableSorting: true,
         enableFiltering: true,
         enableColumnMenu: false
     }, {
         position: 6,
         name: "Action",
-        displayName: '操作',
-        minWidth: 170,
+        minWidth: 100,
         enableSorting: false,
         enableFiltering: false,
         enableColumnMenu: false,
